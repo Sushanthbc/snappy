@@ -1,0 +1,21 @@
+name: snappy
+version: 0.1.0
+
+authors:
+  - Sushanth Gowda <sushanthbc@gmail.com>
+
+targets:
+  snappy:
+    main: src/snappy.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  pg:
+    github: will/crystal-pg
+  dotenv:
+    github: drum445/dotenv
+
+crystal: ">= 1.14.0"
+
+license: MIT
