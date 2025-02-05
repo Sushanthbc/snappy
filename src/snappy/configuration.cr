@@ -3,22 +3,28 @@ module Snappy
     INSTANCE = self.new
 
     property db_url : String | URI
-    property client_ws_url : String
+    property client_ws_url : String, redis_url : String
     property env
     @db : DB::Database | Nil
 
     def initialize
-      @db_url = "postgresql://snappy@localhost:5432/snappy?ssl_mode=false"
-      @env = "development"
-      @client_ws_url = "wss://fstream.binance.com/ws/bnbusdt@aggTrade"
+      @db_url = ""
+      @env = ""
+      @client_ws_url = ""
+      @redis_url = ""
     end
 
     def db
       @db ||= setup_db
     end
+    
+    def redis
+      @redis ||= Redis.new
+    end
 
     def setup
       db
+      redis
     end
 
     private def setup_db
